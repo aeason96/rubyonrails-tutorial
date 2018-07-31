@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class UserController < ApplicationController
+  def index
+    @users = User.all
+  end
+
+  def show
+    @article = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
@@ -12,6 +20,6 @@ class UserController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(user)
   end
 end
