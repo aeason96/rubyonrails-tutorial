@@ -1,6 +1,8 @@
-class ArticlesController < ApplicationController
+# frozen_string_literal: true
 
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: 'dhh',
+                               password: 'secret', except: %i[index show]
 
   def index
     @articles = Article.all
@@ -37,7 +39,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
@@ -45,8 +46,9 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
-  private def article_params
+  private
+
+  def article_params
     params.require(:article).permit(:title, :text)
   end
-
 end
