@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h1>Create User</h1>
 
 <%= form_with model: @user, local: true do |form|%>
 
@@ -9,11 +9,20 @@
 
   <p>
     <%= form.label :password %><br>
-    <%= form.text_area :password %>
+    <%= form.text_field :password %>
   </p>
 
   <p>
     <%= form.submit %>
   </p>
 
+<% end %>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>.
+    <td>
+      <%= user.username %>
+    </td>
+  </tr><br>
 <% end %>
