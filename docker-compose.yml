@@ -1,0 +1,22 @@
+version: '2'
+services:
+  web:
+    container_name: rails-demo-container
+    image: rails-demo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      RAILS_ENV: development
+      RAILS_PORT: 3002
+      HOME: /app
+      MIN_THREADS: 1
+      MAX_THREADS: 8
+      WORKERS: 1
+    volumes:
+    - .:/app
+    ports:
+    - 3002:3002
+    stdin_open: true
+    tty: true
+    user: root
